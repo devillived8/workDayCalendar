@@ -1,0 +1,85 @@
+   body {
+      font-family: Arial, sans-serif;
+      background: #7a7a7a;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin: 0 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: 1px solid black;
+      border-radius: 20px;
+
+    }
+
+    button:hover{
+        background: green;
+              transition: .5s;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+      max-width: 700px;
+      margin: 0 auto;
+      border: 1px solid black;
+      padding: 10px;
+    }
+
+    .day {
+      padding: 8px;
+      background: white;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .night {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .day-shift {
+      background-color: #FFA500;
+      color: white;
+    }
+
+    .off {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .day-header {
+      font-weight: bold;
+      background: #eee;
+    }
+
+    .selected-date {
+  outline: 2px solid #222;
+  outline-offset: -2px;
+  font-weight: bold;
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Фон за всеми элементами */
+  background: #585858; /* Цвет фона, если нужно */
+}
+

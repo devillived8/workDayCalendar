@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Календарь рабочих смен</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <h1>Календарь рабочих смен</h1>
+  <div class="controls">
+    <button onclick="changeMonth(-1)">Назад</button>
+    <span id="month-label"></span>
+    <button onclick="changeMonth(1)">Вперёд</button>
+      <br><br>
+  <button onclick="goToToday()">Текущий месяц</button>
+  <input type="date" id="datePicker" onchange="goToDate()" />
+  </div>
+  <div id="particles-js"></div>
+  <div id="calendar" class="calendar"></div>
+
+<script src="./js/main.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+</body>
+</html>
