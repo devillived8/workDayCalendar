@@ -11,9 +11,9 @@
     let currentYear = new Date().getFullYear();
     const calendar = document.getElementById("calendar");
     const monthLabel = document.getElementById("month-label");
-    const dayNames = ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'];
+    const dayNames = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 
-   function renderCalendar(month, year, highlightedDate = null) {
+ function renderCalendar(month, year, highlightedDate = null) {
   calendar.innerHTML = "";
 
   const monthStart = new Date(year, month, 1);
@@ -23,7 +23,7 @@
   const monthName = monthStart.toLocaleString('ru-RU', { month: 'long' });
   monthLabel.textContent = `${monthName.charAt(0).toUpperCase() + monthName.slice(1)} ${year}`;
 
-  // Заголовки дней недели
+  // Заголовки дней недели (воскресенье в конце)
   for (let d = 0; d < 7; d++) {
     const header = document.createElement('div');
     header.className = 'day day-header';
@@ -31,7 +31,12 @@
     calendar.appendChild(header);
   }
 
-  const firstDay = monthStart.getDay();
+  // Корректировка первого дня недели (1 = понедельник, 0 = воскресенье)
+  let firstDay = monthStart.getDay();
+  // Преобразуем воскресенье (0) в 6, остальные дни уменьшаем на 1
+  firstDay = firstDay === 0 ? 6 : firstDay - 1;
+
+  // Пустые ячейки перед первым днем месяца
   for (let i = 0; i < firstDay; i++) {
     const empty = document.createElement('div');
     empty.className = 'day';
@@ -40,6 +45,7 @@
 
   const msPerDay = 24 * 60 * 60 * 1000;
 
+  // Дни месяца
   for (let date = 1; date <= daysInMonth; date++) {
     const currentDate = new Date(year, month, date);
     const dayDiv = document.createElement('div');
@@ -53,7 +59,6 @@
       dayDiv.classList.add(shift);
     }
 
-    // 🔥 Подсветка выбранной даты
     if (
       highlightedDate &&
       currentDate.getFullYear() === highlightedDate.getFullYear() &&
